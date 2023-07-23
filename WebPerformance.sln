@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPerformance", "WebPerformance\WebPerformance.csproj", "{F35CF883-DFBF-4E2A-84E5-C445D1CE44FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{87172103-5A37-41AE-AFC5-2D65330827F5}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Analyzers.ruleset = Analyzers.ruleset
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F35CF883-DFBF-4E2A-84E5-C445D1CE44FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35CF883-DFBF-4E2A-84E5-C445D1CE44FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35CF883-DFBF-4E2A-84E5-C445D1CE44FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35CF883-DFBF-4E2A-84E5-C445D1CE44FC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FCB3837-C80F-4A12-BAE0-535C717B5060}
+	EndGlobalSection
+EndGlobal
