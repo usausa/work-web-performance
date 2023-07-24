@@ -2,6 +2,10 @@ namespace WebPerformance.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
 
+using Smart.Data.Accessor;
+
+using WebPerformance.Accessors;
+
 [ApiController]
 [Route("[controller]/[action]")]
 public class TestController : ControllerBase
@@ -13,7 +17,7 @@ public class TestController : ControllerBase
     }
 
     [HttpGet("{timeout}")]
-    public async ValueTask<IActionResult> Delay(int timeout)
+    public async ValueTask<IActionResult> Delay([FromRoute] int timeout)
     {
         await Task.Delay(timeout).ConfigureAwait(false);
 
@@ -21,9 +25,21 @@ public class TestController : ControllerBase
     }
 
     [HttpGet("{timeout}")]
-    public IActionResult Sleep(int timeout)
+    public IActionResult Sleep([FromRoute] int timeout)
     {
         Thread.Sleep(timeout);
+
+        return Ok("Hello world.");
+    }
+
+    [HttpGet("{id}")]
+    public async ValueTask<IActionResult> Query([FromRoute] string id, [FromServices] IAccessorResolver<IDataAccessor> accessor)
+    {
+        var entity = await accessor.Accessor.QueryAsync(id).ConfigureAwait(false);
+        if (entity is null)
+        {
+            return NotFound();
+        }
 
         return Ok("Hello world.");
     }

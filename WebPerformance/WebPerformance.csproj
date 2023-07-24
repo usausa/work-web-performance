@@ -6,8 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
+    <PackageReference Include="MySqlConnector" Version="2.2.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Usa.Smart.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Usa.Smart.Core" Version="2.2.1" />
+    <PackageReference Include="Usa.Smart.Data.Accessor" Version="2.4.0" />
+    <PackageReference Include="Usa.Smart.Data.Accessor.Extensions.DependencyInjection" Version="2.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <SqlFiles Remove="Accessors\Sql\IDataAccessor.Query.sql" />
   </ItemGroup>
 
 </Project>
