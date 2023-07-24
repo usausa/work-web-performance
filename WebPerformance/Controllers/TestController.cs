@@ -1,6 +1,7 @@
 namespace WebPerformance.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 
 using Smart.Data.Accessor;
 
@@ -28,6 +29,15 @@ public class TestController : ControllerBase
     public IActionResult Sleep([FromRoute] int timeout)
     {
         Thread.Sleep(timeout);
+
+        return Ok("Hello world.");
+    }
+
+    [HttpGet("{timeout}")]
+    [EnableRateLimiting("fixed")]
+    public async ValueTask<IActionResult> Limit([FromRoute] int timeout)
+    {
+        await Task.Delay(timeout).ConfigureAwait(false);
 
         return Ok("Hello world.");
     }

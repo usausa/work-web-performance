@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.RateLimiting;
+
 using MySqlConnector;
 
 using Smart.Data;
 using Smart.Data.Accessor;
 using Smart.Data.Accessor.Extensions.DependencyInjection;
+
 using WebPerformance.Accessors;
 using WebPerformance.Models;
 using WebPerformance.Settings;
@@ -21,6 +24,17 @@ builder.Services.AddSwaggerGen();
 var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddSingleton<IDbProvider>(new DelegateDbProvider(() => new MySqlConnection(connectionString)));
 builder.Services.AddDataAccessor();
+
+builder.Services.AddRateLimiter(config =>
+{
+    config.AddFixedWindowLimiter("fixed", options =>
+    {
+        options.Window = TimeSpan.FromSeconds(setting.RateLimit.Window);
+        options.PermitLimit = setting.RateLimit.PermitLimit;
+        options.QueueLimit = setting.RateLimit.QueueLimit;
+    });
+    config.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+});
 
 var app = builder.Build();
 
@@ -53,5 +67,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseRateLimiter();
 
 await app.RunAsync().ConfigureAwait(false);
