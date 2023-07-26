@@ -29,7 +29,7 @@ builder.Services.AddRateLimiter(config =>
 {
     config.AddFixedWindowLimiter("fixed", options =>
     {
-        options.Window = TimeSpan.FromSeconds(setting.RateLimit.Window);
+        options.Window = TimeSpan.FromMilliseconds(setting.RateLimit.Window);
         options.PermitLimit = setting.RateLimit.PermitLimit;
         options.QueueLimit = setting.RateLimit.QueueLimit;
     });
